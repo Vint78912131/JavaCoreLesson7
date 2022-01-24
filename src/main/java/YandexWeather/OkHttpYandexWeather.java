@@ -11,7 +11,6 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class OkHttpYandexWeather {
@@ -62,21 +61,19 @@ public class OkHttpYandexWeather {
                 String eveningC = individualElement.get("parts").get("evening").get("condition").asText();
                 String nightT = individualElement.get("parts").get("night").get("temp_avg").asText();
                 String nightC = individualElement.get("parts").get("night").get("condition").asText();
-                System.out.println("morning: " + morningT);
-                System.out.println("condition: " + morningC);
-                System.out.println("day: " + dayT);
-                System.out.println("condition: " + dayC);
-                System.out.println("evening: " + eveningT);
-                System.out.println("condition: " + eveningC);
-                System.out.println("night: " + nightT);
-                System.out.println("condition: " + nightC);
+                System.out.println("В городе " + city + " на дату " + date + " ожидается утром " + morningC + ", температура " + morningT);
+                System.out.println("В городе " + city + " на дату " + date + " ожидается днём " + dayC + ", температура " + dayT);
+                System.out.println("В городе " + city + " на дату " + date + " ожидается вечером " + eveningC + ", температура " + eveningT);
+                System.out.println("В городе " + city + " на дату " + date + " ожидается ночью " + nightC + ", температура " + nightT);
                 System.out.println();
                 ws.add(new WeatherResponse(date,city,dayC,Integer.parseInt(dayT)));
             }
 
         for (WeatherResponse o : ws) {
+            System.out.println(o);
             String weatherF = objectMapper.writeValueAsString(o);
-            System.out.println(weatherF);
+            System.out.println("json view:");
+            System.out.println(weatherF + "\n");
         }
     }
 }

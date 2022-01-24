@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse {
-    @SerializedName("date")
-    private String DATE;
     @SerializedName("city")
     private String CITY;
+    @SerializedName("date")
+    private String DATE;
     @SerializedName("condition")
     private String WEATHER_TEXT;
     @SerializedName("temp_avg")
@@ -55,10 +55,9 @@ public class WeatherResponse {
 
     @Override
     public String toString() {
-        return "WeatherResponse{" +
-                "DATE='" + DATE + '\'' +
-                ", WEATHER_TEXT='" + WEATHER_TEXT + '\'' +
-                ", TEMPERATURE=" + TEMPERATURE +
-                '}';
+        return "В городе " + CITY + "\n" +
+                "на дату " + DATE + "\n" +
+                "ожидается " + WEATHER_TEXT + "\n" +
+                "температура " + TEMPERATURE + "\n";
     }
 }
